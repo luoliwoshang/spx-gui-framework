@@ -72,8 +72,8 @@ onMounted(() => { console.log('Component is mounted!'); });
 ```
 
 组件调用举例
--  \<!--  S Component ComponentName -->  表示组件开始
-- \<!--  E Component ComponentName -->  表示组件结束
+-  `\<!--  S Component ComponentName -->`  表示组件开始
+- `\<!--  E Component ComponentName -->`  表示组件结束
 ```vue
 <template>  
   <!--  S Component SpirteList -->  
@@ -125,7 +125,7 @@ const routes = [
 
 ### 工具类开发规范
 以封装一个简单的ajax请求为例
-1. 创建相应包及js文件，比如在ap包下创建request.js
+1. 创建相应包及js文件，比如在api包下创建request.js
 2. 编写工具函数，写好完整注释
 
 ```javascript
@@ -140,7 +140,8 @@ const routes = [
  *  
  * @author yxy  
  * @createDate 2024.1.10  
- */export async function request(method, url, dataOrParams = null,headers={} ) {  
+ */
+export async function request(method, url, dataOrParams = null,headers={} ) {  
     const base_url = "http://localhost:xxxx" + url;  
     try {  
         const defaultHeaders = {  
