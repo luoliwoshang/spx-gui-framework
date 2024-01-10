@@ -90,8 +90,8 @@ import SpriteList from "@/components/spirte-list/SpriteList.vue";
 以添加SpirteList为例
 1. 原内容
 ```javascript
-const routes = [  
-	{ path: '/', redirect: '/spx/homepage' },
+const routes = [
+    {path: '/', redirect: '/spx/homepage' },
     {        
 	    path: '/spx/homepage',  
         name: 'SpxHomepage',  
@@ -104,7 +104,7 @@ const routes = [
 2. 添加SpirteList
 ```javascript
 const routes = [  
-	{ path: '/', redirect: '/spx/homepage' },
+    { path: '/', redirect: '/spx/homepage' },
     {       
 	    path: '/spx/homepage',  
         name: 'SpxHomepage',  
@@ -120,7 +120,7 @@ const routes = [
 ];
 ```
 
-3. 在浏览器地址栏输入 [项目部署url]/spirete/list即可访问到该组件页面
+3. 在浏览器地址栏输入 [项目部署url]/spirte/list即可访问到该组件页面
 
 
 ### 工具类开发规范
@@ -177,6 +177,7 @@ export async function request(method, url, dataOrParams = null,headers={} ) {
 <script setup>
 
 // TODO 完成xx内容编写/bugfix  @xxx
+    
 </script>
 ```
 
