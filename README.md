@@ -93,7 +93,7 @@ import SpriteList from "@/components/spirte-list/SpriteList.vue";
 const routes = [
     {path: '/', redirect: '/spx/homepage' },
     {        
-	    path: '/spx/homepage',  
+        path: '/spx/homepage',  
         name: 'SpxHomepage',  
         component: () =>  
             import("../components/SpxHomepage.vue"),  
@@ -106,7 +106,7 @@ const routes = [
 const routes = [  
     { path: '/', redirect: '/spx/homepage' },
     {       
-	    path: '/spx/homepage',  
+        path: '/spx/homepage',  
         name: 'SpxHomepage',  
         component: () =>  
             import("../components/SpxHomepage.vue"),  
