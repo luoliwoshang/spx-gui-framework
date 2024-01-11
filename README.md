@@ -34,7 +34,7 @@
 
 ### 组件开发规范
 1. 驼峰式命名
-2. 标签的顺序统一为`<script>、<template>、<style>`
+2. 标签的顺序统一为`<template>、<script>、<style>`
 3. 采用组件式API编写代码
 4. `defineProps`采用类型声明
 5. 与父组件紧密耦合的子组件，命名要以父组件名为前缀，例：`SpirteList`、`SpirteListItem`、`SpirteListItemButton`
