@@ -1,28 +1,27 @@
 <template>
-  <div>展示SpirteList</div>
+  <div>Display SpriteList</div>
 </template>
 
 <script setup>
-// ----------导入需求包/组件----------------------------
+// ----------Import required packages / components-----------
 import {computed, onMounted, ref} from "vue";
+// import aaa;
 
 // ----------props & emit-------------------------
-const props = defineProps({ spirteName: String });
+const props = defineProps({ spriteName: String }); // Props based on type declaration
 const emit = defineEmits(['update']);
 
-// ----------data相关（reactive，ref..）-----------
+// ----------data related (reactive, ref..)-----------
 const count = ref(0);
 
-// ----------计算属性------------------------------
+// ----------computed properties------------------
 const doubled = computed(() => count.value * 2);
 
-// ----------生命周期钩子---------------------------
+// ----------lifecycle hooks-----------------------
 onMounted(() => { console.log('Component is mounted!'); });
 
-// ----------其他组合式函数-------------------------
-// 比如useRouter, useStore..
+// ----------other composition functions-----------
+// Such as useRouter, useStore..
 
-// ----------方法，相关的方法尽量放在上下文------------
-
-
+// ----------methods, relevant methods as much as possible in context------------
 </script>

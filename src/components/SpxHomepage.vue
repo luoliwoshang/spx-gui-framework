@@ -1,7 +1,7 @@
 <template>
-  <!--  Component SpirteList -->
+  <!--  S Component SpirteList -->
   <SpriteList></SpriteList>
-  <!--  Component SpirteList -->
+  <!--  E Component SpirteList -->
 </template>
 
 <script setup>

@@ -1,9 +1,9 @@
 # spx-gui
 
-## 依赖安装
+## Dependency Installation
 `npm install`
 
-相关依赖如下
+Dependencies are as follows:
 ```node
 "axios": "^1.6.5",  
 "vue": "^3.3.11",  
@@ -11,180 +11,180 @@
 "vuex": "^4.0.2"
 ```
 
-## 项目运行
+## Project Execution
 `vite`
 
-## 代码架构
-```
+## Code Architecture
+```arduino
 ├── public 
 └── src 
-    ├── api          请求
-    ├── assets       资源文件
-    ├── components   组件
-    ├── router       路由
-    ├── store        状态/存储管理
-    └── util         工具
+    ├── api          // Requests
+    ├── assets       // Resource files
+    ├── components   // Components
+    ├── router       // Routing
+    ├── store        // State/Storage Management
+    └── util         // Utils
 ```
 
+## Development Standards
+### Directory Naming Convention
+1. Use lowercase, separated by hyphens, e.g., sprite-library
 
-## 开发规范
+### Component Development Standards
+1. CamelCase naming
+2. The order of tags is unified as `<script>, <template>, <style>`
+3. Use the Composition API for coding
+4. defineProps should use type declaration
+5. Child components that are tightly coupled with the parent component should be prefixed with the parent component's name, e.g., SpriteList, SpriteListItem, SpriteListItemButton
 
-### 目录命名方式
-1. 以小写，中划线分割，例：`spirte-library`
-
-### 组件开发规范
-1. 驼峰式命名
-2. 标签的顺序统一为`<template>、<script>、<style>`
-3. 采用组件式API编写代码
-4. `defineProps`采用类型声明
-5. 与父组件紧密耦合的子组件，命名要以父组件名为前缀，例：`SpirteList`、`SpirteListItem`、`SpirteListItemButton`
-
-一个完整的组件编写例子如下，命名为`SpirteList`：
+Here is a complete example of a component named SpriteList:
 ```vue
 <template>
-  <div>展示SpirteList</div>
+  <div>Display SpriteList</div>
 </template>
 
 <script setup>
-// ----------导入需求包 / 组件组件----------------------------
+// ----------Import required packages / components-----------
 import {computed, onMounted} from "vue";
 // import aaa;
 
-// ----------props & emit-------------------------
-const props = defineProps({ spirteName: String });// 基于类型声明的props
+// ----------props & emit------------------------------------
+const props = defineProps({ spriteName: String }); // Props based on type declaration
 const emit = defineEmits(['update']);
 
-// ----------data相关（reactive，ref..）-----------
-const count = ref(0); 
+// ----------data related (reactive, ref..)------------------
+const count = ref(0);
 
-// ----------计算属性------------------------------
+// ----------computed properties-----------------------------
 const doubled = computed(() => count.value * 2);
 
-// ----------生命周期钩子---------------------------
+// ----------lifecycle hooks---------------------------------
 onMounted(() => { console.log('Component is mounted!'); });
 
-// ----------其他组合式函数-------------------------
-// 比如useRouter, useStore..
+// ----------other composition functions---------------------
+// Such as useRouter, useStore..
 
-// ----------方法，相关的方法尽量放在上下文------------
-
+// ----------methods-----------------------------------------
 </script>
 ```
 
-组件调用举例
--  `<!--  S Component ComponentName -->`  表示组件开始
-- `<!--  E Component ComponentName -->`  表示组件结束
-```vue
-<template>  
-  <!--  S Component SpirteList -->  
-  <SpriteList></SpriteList>  
-  <!--  E Component SpirteList -->  
-</template>  
-  
-<script setup>  
-import SpriteList from "@/components/spirte-list/SpriteList.vue";  
+Example of component invocation:
+<!-- S Component ComponentName --> indicates the start of the component
+<!-- E Component ComponentName --> indicates the end of the component
+```vue3
+<template>
+  <!--  S Component SpriteList -->
+<SpriteList></SpriteList>
+  <!--  E Component SpriteList -->
+</template>
+
+<script setup>
+import SpriteList from "@/components/sprite-list/SpriteList.vue";
 </script>
 ```
 
-### 路由添加
-以添加SpirteList为例
-1. 原内容
+### Route Addition
+Adding SpriteList as an example:
+
+1. Original content
 ```javascript
 const routes = [
-    {path: '/', redirect: '/spx/homepage' },
-    {        
-        path: '/spx/homepage',  
-        name: 'SpxHomepage',  
-        component: () =>  
-            import("../components/SpxHomepage.vue"),  
+    { path: '/', redirect: '/spx/homepage' },
+    {
+    path: '/spx/homepage',
+    name: 'SpxHomepage',
+    component: () =>
+    import("../components/SpxHomepage.vue"),
     }
 ];
 ```
 
-2. 添加SpirteList
+2. Adding SpriteList
 ```javascript
-const routes = [  
+const routes = [
     { path: '/', redirect: '/spx/homepage' },
-    {       
-        path: '/spx/homepage',  
-        name: 'SpxHomepage',  
-        component: () =>  
-            import("../components/SpxHomepage.vue"),  
-    },  
-    {  
-        path: '/spirte/list',  
-        name: 'SpirteList',  
-        component: () =>  
-            import("../components/spirte-list/SpriteList.vue"),  
-    },  
+    {
+    path: '/spx/homepage',
+    name: 'SpxHomepage',
+    component: () =>
+    import("../components/SpxHomepage.vue"),
+    },
+    {
+    path: '/sprite/list',
+    name: 'SpriteList',
+    component: () =>
+    import("../components/sprite-list/SpriteList.vue"),
+    },
 ];
 ```
 
-3. 在浏览器地址栏输入 [项目部署url]/spirte/list即可访问到该组件页面
+3. Enter [project deployment URL]/sprite/list in the browser address bar to access the component page
 
+### Utility Function Standards
+Encapsulating a simple ajax request as an example:
 
-### 工具类开发规范
-以封装一个简单的ajax请求为例
-1. 创建相应包及js文件，比如在api包下创建request.js
-2. 编写工具函数，写好完整注释
+1. Create the appropriate package and js file, e.g., create request.js in the api package
+2. Write utility functions with complete comments
 
 ```javascript
-/**  
- * @description 基础的ajax请求方法  
- *  
- * @param method 请求方法，"POST" / "GET"  
- * @param url   请求地址  
- * @param dataOrParams  请求参数/请求体  
- * @param headers   请求头  
- * @returns {Promise<any>}  
- *  
- * @author yxy  
- * @createDate 2024.1.10  
+/**
+* @description Basic ajax request method
+*
+* @param method Request method, "POST" / "GET"
+* @param url    Request URL
+* @param dataOrParams  Request parameters/body
+* @param headers   Request headers
+* @returns {Promise<any>}
+*
+* @author yxy
+* @createDate 2024.1.10
  */
-export async function request(method, url, dataOrParams = null,headers={} ) {  
-    const base_url = "http://localhost:xxxx" + url;  
-    try {  
-        const defaultHeaders = {  
-            "Content-Type": "application/json",  
-        };  
-  
-        const mergedHeaders = {  
-            ...defaultHeaders,  
-            ...headers,  
-        };  
-  
-        const response = await axios({  
-            method,  
-            url: base_url,  
-            data: method.toLowerCase() === "get" ? null : dataOrParams,  
-            params: method.toLowerCase() === "get" ? dataOrParams : null,  
-            headers: mergedHeaders,  
-        });  
-        console.log(`[request] ${base_url} |接口请求成功，response:`);  
-        console.log(response)  
-        return response.data;  
-    } catch (error) {  
-        console.log(`[request] ${base_url} |接口请求失败, 请求体:dataOrParams: ${JSON.stringify(dataOrParams)}`);  
-        console.log(error);  
-        throw error;  
-    }  
+export async function request(method, url, dataOrParams = null,headers={} ) {
+    const base_url = "http://localhost:xxxx" + url;
+    try {
+        const defaultHeaders = {
+            "Content-Type": "application/json",
+        };
+
+        const mergedHeaders = {
+            ...defaultHeaders,
+            ...headers,
+        };
+
+        const response = await axios({
+            method,
+            url: base_url,
+            data: method.toLowerCase() === "get" ? null : dataOrParams,
+            params: method.toLowerCase() === "get" ? dataOrParams : null,
+            headers: mergedHeaders,
+        });
+        console.log(`[request] ${base_url} |request successful，response:`);
+        console.log(response)
+        return response.data;
+    } catch (error) {
+        console.log(`[request] ${base_url} |request failed, dataOrParams: ${JSON.stringify(dataOrParams)}`);
+        console.log(error);
+        throw error;
+    }
 }
+
 ```
 
-### 团队交接规范
-以TODO的方式进行团队代码交接
+### Team Work Standards
+Use TODO for team code handover
+
 ```javascript
 <script setup>
 
-// TODO 完成xx内容编写/bugfix  @xxx
+// TODO Complete xx content writing/bugfix  @xxx
     
 </script>
 ```
 
+## Complete Component Development Process Reference
+Taking the creation of an Audio Editing Page as an example:
 
-## 完整的组件编写流程参考
-以编写**音频编辑页面**为例：
-1. 如果是新页面，创建一个文件夹：`sounds-edit`
-2. 创建`SoundEdit.vue`组件
-3. 注册该组件到路由
-4. 完成页面编写
+1. If it's a new page, create a folder, sounds-edit
+2. Create SoundEdit.vue component
+3. Register the component in the route
+4. Complete the page development

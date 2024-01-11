@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 /**
- * @description 基础的ajax请求方法
+ * @description Basic ajax request method
  *
- * @param method 请求方法，"POST" / "GET"
- * @param url   请求地址
- * @param dataOrParams  请求参数/请求体
- * @param headers   请求头
+ * @param method Request method, "POST" / "GET"
+ * @param url    Request URL
+ * @param dataOrParams  Request parameters/body
+ * @param headers   Request headers
  * @returns {Promise<any>}
  *
  * @author yxy
@@ -31,11 +31,11 @@ export async function request(method, url, dataOrParams = null,headers={} ) {
             params: method.toLowerCase() === "get" ? dataOrParams : null,
             headers: mergedHeaders,
         });
-        console.log(`[request] ${base_url} |接口请求成功，response:`);
+        console.log(`[request] ${base_url} |request successful，response:`);
         console.log(response)
         return response.data;
     } catch (error) {
-        console.log(`[request] ${base_url} |接口请求失败, 请求体:dataOrParams: ${JSON.stringify(dataOrParams)}`);
+        console.log(`[request] ${base_url} |request failed, dataOrParams: ${JSON.stringify(dataOrParams)}`);
         console.log(error);
         throw error;
     }
