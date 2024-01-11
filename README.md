@@ -72,8 +72,8 @@ onMounted(() => { console.log('Component is mounted!'); });
 ```
 
 组件调用举例
--  `\<!--  S Component ComponentName -->`  表示组件开始
-- `\<!--  E Component ComponentName -->`  表示组件结束
+-  `<!--  S Component ComponentName -->`  表示组件开始
+- `<!--  E Component ComponentName -->`  表示组件结束
 ```vue
 <template>  
   <!--  S Component SpirteList -->  
